@@ -1,7 +1,7 @@
 import pygame
  
 # -- Global constants
- 
+guy = pygame.image.load('dood.png')
 # Colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -22,8 +22,9 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
  
         # Set height, width
-        self.image = pygame.Surface([15, 15])
-        self.image.fill(WHITE)
+        self.image = pygame.Surface([50,50],pygame.SRCALPHA,32)
+        self.image.convert_alpha()
+        self.image.blit(guy,(0,0))
  
         # Make our top-left corner the passed-in location.
         self.rect = self.image.get_rect()
