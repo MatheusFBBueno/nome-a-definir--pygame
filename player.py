@@ -1,15 +1,13 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the bar at the bottom that the player
-    controls. """
- 
+
     # Constructor function
     def __init__(self, x, y):
         super().__init__()
  
         # altura, largura
-        self.image = pygame.Surface([50, 50],pygame.SRCALPHA,32)
+        self.image = pygame.Surface([100, 100],pygame.SRCALPHA,32)
         self.image.convert_alpha()
 
         # Make our top-left corner the passed-in location.
@@ -26,12 +24,10 @@ class Player(pygame.sprite.Sprite):
         self.image.blit(imagem,(0,0))
 
     def changespeed(self, x, y):
-        """ Change the speed of the player. """
         self.change_x += x
         self.change_y += y
  
     def update(self):
-        """ Update the player position. """
         # mover
         self.rect.x += self.change_x
  
