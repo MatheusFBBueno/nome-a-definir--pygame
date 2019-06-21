@@ -1,6 +1,6 @@
 import pygame
-from Seila.player import Player
-from Seila.wall import Wall
+from Fases.player import Player
+from Fases.wall import Wall
 
 guy = pygame.image.load('images/dood.png')
 camac = pygame.image.load('images/bed.png')
@@ -18,6 +18,15 @@ background = pygame.image.load("images/FasePorao.png")
 
 pygame.init()
 fonte = pygame.font.Font('pokemon_fire_red.ttf', 24)
+
+guyF = pygame.image.load('images/dood_frontal.png')
+guyL = pygame.image.load('images/dood_left.png')
+guyR = pygame.image.load('images/dood_right.png')
+guyB = pygame.image.load('images/dood_back.png')
+guyF = pygame.transform.scale(guyF,(100,100))
+guyL = pygame.transform.scale(guyL,(100,100))
+guyR = pygame.transform.scale(guyR,(100,100))
+guyB = pygame.transform.scale(guyB,(100,100))
 
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 
@@ -98,9 +107,9 @@ wall_list.add(textbox)
 all_sprite_list.add(textbox)
 
 # Jogador
-player = Player(200, 10)
+player = Player(200, 10,100,100)
 guy = pygame.transform.scale(guy, (100, 100))
-player.definirImagem(guy)
+player.definirImagem(guyF,guyB,guyL,guyR)
 player.walls = wall_list
 all_sprite_list.add(player)
 
