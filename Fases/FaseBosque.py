@@ -1,13 +1,23 @@
 import pygame
-from player import Player
-from wall import Wall
-from interagivel import Interagivel
-from texto import inserttext
+from Fases.player import Player
+from Fases.wall import Wall
+from Fases.interagivel import Interagivel
+from Fases.texto import inserttext
 
 
 #Constantes globais
-guy = pygame.image.load('dood.png')
+guy = pygame.image.load('images/dood.png')
 # camac = pygame.image.load('bed.png')
+
+
+guyF = pygame.image.load('images/dood_frontal.png')
+guyL = pygame.image.load('images/dood_left.png')
+guyR = pygame.image.load('images/dood_right.png')
+guyB = pygame.image.load('images/dood_back.png')
+guyF = pygame.transform.scale(guyF,(100,100))
+guyL = pygame.transform.scale(guyL,(100,100))
+guyR = pygame.transform.scale(guyR,(100,100))
+guyB = pygame.transform.scale(guyB,(100,100))
 
 # Cores
 BLACK = (0, 0, 0)
@@ -33,14 +43,14 @@ all_sprite_list = pygame.sprite.Group()
 # paredes (x_pos, y_pos, width, height)
 wall_list = pygame.sprite.Group()
 
-img_background = pygame.image.load("bosque_sem_arvore.png")
+img_background = pygame.image.load("images/bosque_sem_arvore.png")
 img_background = pygame.transform.scale(img_background,(800, 600))
 background = Interagivel(0,0,800,600,[""])
 background.carregarImagem(img_background)
 # wall_list.add(background)
 all_sprite_list.add(background)
 
-img_background = pygame.image.load("arvore_bosque_tronco.png")
+img_background = pygame.image.load("images/arvore_bosque_tronco.png")
 img_background = pygame.transform.scale(img_background,(800, 600))
 background = Interagivel(0,0,800,600,[""])
 background.carregarImagem(img_background)
@@ -93,9 +103,9 @@ wall_list.add(textbox)
 all_sprite_list.add(textbox)
 
 # Jogador
-player = Player(100, 100)
+player = Player(100, 100,100,100)
 guy = pygame.transform.scale(guy,(100,100))
-player.definirImagem(guy)
+player.definirImagem(guyF,guyB,guyL,guyR)
 player.walls = wall_list
 all_sprite_list.add(player)
 
@@ -135,7 +145,7 @@ def fase1():
     chave1 = False
     chave2 = False
 
-    img_background = pygame.image.load("arvore_bosque_verde1.png")
+    img_background = pygame.image.load("images/arvore_bosque_verde1.png")
     img_background = pygame.transform.scale(img_background,(800, 600))
     background = Interagivel(0,0,800,600,[""])
     background.carregarImagem(img_background)
